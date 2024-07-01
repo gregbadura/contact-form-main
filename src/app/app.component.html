@@ -1,0 +1,56 @@
+<main class="main">
+<div></div>
+  <div class="content">
+      <p class="h1">Contact Us</p>
+    <form action="">
+      <div style="display: flex; align-items: center;justify-content: space-between;">
+          <div style="display: flex;flex-direction: column;width: 50rem; margin-right: 15px;">
+              <label for="fname">First Name</label>
+              <input type="text" name="fname" id="fname">
+              <p hidden>This field is required</p>
+          </div>
+          <div style="display: flex;flex-direction: column;width: 50rem;">
+              <label for="lname">Last Name</label>
+              <input type="text" name="lname" id="lname">
+              <p hidden>This field is required</p>
+          </div>
+      </div>
+
+      <label for="email">Email Address</label>
+      <input type="email" name="email" id="email">
+      <p hidden>Please enter a valid email address</p>
+      <p hidden>This field is required</p>
+
+      
+      <div style="margin-top: 1rem;">
+      <div style="margin-bottom: .5rem;"><label for="generalenq">Query Type</label></div>
+        <div style="display: flex; align-items: center;">
+          <div style="margin-right: 15px;" class="whichtypebox"><input class="rounded" type="checkbox" name="generalenq" id="generalenq"><span>&nbsp;&nbsp;</span>General Enquiry</div>
+          <div style="padding-left: 1rem;" class="whichtypebox"><input class="rounded" type="checkbox" name="supportreq" id="supportreq"><span>&nbsp;&nbsp;</span>Support Request</div>
+          <p hidden>Please select a query type</p>
+        </div>  
+      </div>
+
+      <div style="display: flex;flex-direction: column;margin-bottom: 1rem;">
+      <label for="message">Message</label>
+      <textarea style="height: 6.5rem;" type="textarea" name="message" id="message">
+      </textarea>
+      <p hidden>This field is required</p>
+      </div>
+
+      <div style="display: flex;flex-direction: wrap;">
+      <input type="checkbox" name="agreed" id="agreed">
+      <label for="agreed" style="margin-left: .7rem;">I consent to being contacted by the team</label>
+      </div>
+      
+      <p hidden>To submit this form, please consent to being contacted</p>
+      <input type="submit" value="Submit">
+    </form>
+      <div hidden>
+      Message Sent!
+      Thanks for completing the form. We'll be in touch soon!
+      </div>
+</div>
+<div></div>
+</main>
+<router-outlet />

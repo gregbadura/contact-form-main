@@ -1,0 +1,65 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+        .content{
+            display: flex;
+            flex-direction: column;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            width: 50rem;
+            height: 41.5rem;
+            background-color: hsl(0, 0%, 100%);
+            border-radius: .9rem;
+            margin-top: 5rem;
+            
+            form{
+                display: flex;
+                flex-direction: column;
+            }
+            label{
+                margin-top: 1rem;
+                margin-bottom: .5rem;
+            }
+            input{
+                padding-left: 1rem;
+                border-radius: .5rem;
+                border: 1px hsl(187, 24%, 22%) solid;
+            }
+            input[type="submit"]{
+                margin-top: 1.7rem;
+                background-color: hsl(169, 82%, 27%);
+                color: hsl(0, 0%, 100%);
+                border: none;
+                height: 3.8rem;
+                font-weight: 700;
+            }
+            .rounded{
+                width: 20px;
+                height: 20px;
+                background-color: white;
+                border-radius: 50%;
+                vertical-align: middle;
+                border: 2px solid #ddd;
+                appearance: none;
+                -webkit-appearance: none;
+                outline: none;
+                cursor: pointer;
+            }
+            .whichtypebox{
+                height: 2.7rem;
+                padding-left: 1rem;
+                width: 50rem;
+                display: flex;
+                align-items: center;
+                border-radius: .5rem;
+                border: 1px hsl(187, 24%, 22%) solid;
+            }
+            textarea{
+                border: 1px solid hsl(187, 24%, 22%);
+                border-radius: .5rem;
+            }
+    }
+}
