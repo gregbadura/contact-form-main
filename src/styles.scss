@@ -27,6 +27,10 @@ label{
     font-weight: 400;
 }
 
+.whichtypebox:hover{
+    border: 1px red solid;
+}
+
 label:after{
     content: "*";
     color: hsl(169, 82%, 27%);
@@ -39,4 +43,15 @@ label:after{
     font-weight: 700;
     font-family: "Karla", sans-serif;
     margin-bottom: 1rem;
+}
+
+.red-text{
+    color: hsl(0, 66%, 54%);
+    font-size: 12px;
+    font-family: "Karla", sans-serif;
+    overflow: hidden;
+}
+
+.hidden{
+    visibility:hidden;
 }
