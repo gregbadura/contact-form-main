@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import * as EmailValidator from 'email-validator';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -20,10 +21,10 @@ export class AppComponent implements OnInit{
     });
 
     function tick(e: Event) {
-      const state = (e.target as HTMLInputElement).checked;
-      Array.from(queryoptions).forEach((q: Element) => {
-        (q as HTMLInputElement).checked = false;
-      });
+    const state = (e.target as HTMLInputElement).checked;
+    Array.from(queryoptions).forEach((q: Element) => {
+      (q as HTMLInputElement).checked = false;
+    });
       (e.target as HTMLInputElement).checked = state;
     }
   }
