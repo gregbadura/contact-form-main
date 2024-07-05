@@ -1,99 +1,47 @@
 <main class="main">
   <div class="content">
       <p class="h1">Contact Us</p>
-    <form action="" onsubmit="  
-                                
-                                if (this.fname.value.length < 1)
-                                { let fnamereq = document.getElementById('fname-req');
-                                  fnamereq.classList.remove('hidden');
-                                };
+    <ng-form #form="ngForm">
 
-                                if (this.lname.value.length < 1)
-                                { let lnamereq = document.getElementById('lname-req');
-                                  lnamereq.classList.remove('hidden');
-                                };
-
-                                if (this.message.value.length < 1)
-                                { let messagereq = document.getElementById('message-req');
-                                  messagereq.classList.remove('hidden');
-                                };
-
-                                if (this.supportreq.checked == false && this.generalenq.checked == false)
-                                { let querytype = document.getElementById('query-req');
-                                  querytype.classList.remove('hidden');
-                                };
-
-                                let emailInput = document.getElementById('email').value;
-                                
-                                function validateEmail(emailInput) {
-                                let re = /\S+@\S+\.\S+/;
-                                return re.test(emailInput);
-                                };
-                                
-                                if (validateEmail(emailInput) == false)
-                                { let incemail = document.getElementById('incorrectemail');
-                                  incemail.classList.remove('hidden');
-                                }
-                                
-
-                                let agreedbox = document.querySelector('#agreed');
-                                if (agreedbox.checked == false)
-                                { let agreed = document.getElementById('agreedreq');
-                                  agreed.classList.remove('hidden');
-                                  return false;
-                                };
-
-                                if(this.fname.value.length > 0
-                                && this.lname.value.length > 0
-                                && this.message.value.length > 0
-                                && ((this.supportreq.checked == true && this.generalenq.checked == false) || (this.supportreq.checked == false && this.generalenq.checked == true))
-                                && validateEmail(emailInput) == true
-                                && agreedbox.checked == true)
-                                {
-                                  let succesdialoginf = document.getElementById('succesdialog');
-                                  succesdialoginf.classList.remove('hidden');
-                                  return false;
-                                }
-                                ">
       <div class="mobildesign" style="display: flex; align-items: center;justify-content: space-between;">
           <div class="mobile" style="display: flex;flex-direction: column;width: 50rem; margin-right: 15px;">
               <label for="fname">First Name</label>
-              <input type="text" name="fname" id="fname">
-              <span id="fname-req" class="red-text hidden">This field is required</span>
+              <input type="text" name="fname" id="fname" [(ngModel)]="fName">
+              <span [ngClass]="fNameError ? '' : 'hidden' " id="fname-req" class="red-text ">This field is required</span>
           </div>
           <div class="mobile" style="display: flex;flex-direction: column;width: 50rem;">
               <label for="lname">Last Name</label>
-              <input type="text" name="lname" id="lname">
-              <span id="lname-req" class="red-text hidden">This field is required</span>
+              <input type="text" name="lname" id="lname" [(ngModel)]="lName">
+              <span [ngClass]="lNameError ? '' : 'hidden' " id="lname-req" class="red-text ">This field is required</span>
           </div>
       </div>
 
       <label for="email">Email Address</label>
-      <input type="text" name="email" id="email" #inputemail>
-      <span id="incorrectemail" class="red-text hidden">Please enter a valid email address</span>
+      <input type="text" name="email" id="email" [(ngModel)]="email">
+      <span [ngClass]="emailError ? '' : 'hidden' " id="incorrectemail" class="red-text ">Please enter a valid email address</span>
       
       <div style="margin-top: 1rem;">
       <div style="margin-bottom: .5rem;"><label for="generalenq">Query Type</label></div>
-        <div style="display: flex; align-items: center;">
-          <div style="margin-right: 15px;" class="whichtypebox"><input #option class="rounded option" type="checkbox" name="generalenq" id="generalenq"><span>&nbsp;&nbsp;</span>General Enquiry</div>
-          <div style="padding-left: 1rem;" class="whichtypebox"><input #option class="rounded option" type="checkbox" name="supportreq" id="supportreq"><span>&nbsp;&nbsp;</span>Support Request</div>
-        </div>  
-        <span id="query-req" class="red-text hidden">Please select a query type</span>
+      <div style="display: flex; align-items: center;">
+            <input #option class=" " type="radio" name="req" id="generalenq" value="generalenq" [(ngModel)]="req"><span>&nbsp;&nbsp;</span>General Enquiry
+            <input #option class=" " type="radio" name="req" id="supportreq" value="supportreq" [(ngModel)]="req"><span>&nbsp;&nbsp;</span>Support Request
+      </div> 
+        <span [ngClass]="reqError ? '' : 'hidden' " id="query-req" class="red-text ">Please select a query type</span>
       </div>
 
       <div style="display: flex;flex-direction: column;margin-bottom: 1rem;">
       <label for="message">Message</label>
-      <textarea style="padding: 1rem;height: 6.5rem;max-width: 48rem; " type="textarea" name="message" id="message"></textarea>
-      <span id="message-req" class="red-text hidden">This field is required</span>
+      <textarea style="padding: 1rem;height: 6.5rem;max-width: 48rem; " type="textarea" name="message" id="message" [(ngModel)]="message"></textarea>
+      <span [ngClass]="messageError ? '' : 'hidden' " id="message-req" class="red-text ">This field is required</span>
       </div>
 
       <div style="display: flex; flex-direction: wrap; height: 40px;">
-      <input type="checkbox" name="agreed" id="agreed"  #agreed>
+      <input type="checkbox" name="agreed" id="agreed"  [(ngModel)]="agreed">
       <label for="agreed" style="margin-left: .7rem;">I consent to being contacted by the team</label>
       </div>
-      <span id="agreedreq" class="red-text hidden">To submit this form, please consent to being contacted</span>
-      <input type="submit" value="Submit">
-    </form>
+      <span [ngClass]="agreedError ? '' : 'hidden' " id="agreedreq" class="red-text ">To submit this form, please consent to being contacted</span>
+      <button type="button" (click)="submit()">Submit</button>
+    </ng-form>
       <dialog id="succesdialog" style="display: flex;flex-direction: column;" class="hidden">
       <span style="font-weight: 700;">✅ Message Sent!</span>
       <span style="font-weight: 400;">Thanks for completing the form. We'll be in touch soon!</span>
